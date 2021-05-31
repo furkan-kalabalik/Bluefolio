@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+Index Page
+{% endblock %}
+
+{% block content %}
+    <table class="table table-primary table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Coin Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Platform Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for coin in content %}
+        <tr>
+          <th scope="row">{{ coin[0] }}</th>
+            {% if coin[1] != None %}
+                <td>{{ '{0:,}'.format(coin[1]) }}</td>
+            {% else %}
+                <td>{{ coin[1] }}</td>
+            {% endif %}
+          <td>{{ coin[2] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

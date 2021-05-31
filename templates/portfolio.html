@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+Index Page
+{% endblock %}
+
+{% block content %}
+    <table class="table table-success table-borderless">
+      <thead class=table-dark">
+        <tr>
+          <th scope="col">Coin name</th>
+          <th scope="col">Platform</th>
+          <th scope="col">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for coin in content %}
+        <tr>
+          <th scope="row">{{ coin[0] }}</th>
+          <td>{{ coin[1] }}</td>
+          <td>{{ coin[2] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

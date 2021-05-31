@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}
+Index Page
+{% endblock %}
+
+{% block content %}
+    {% if content|length ==  0%}
+    <h1 class="display-6">User doesn't have any portfolio</h1>
+    {% else %}
+        <table class="table table-success table-borderless">
+          <thead class=table-dark">
+            <tr>
+              <th scope="col">Portfolio Name</th>
+              <th scope="col">Start Date</th>
+              <th scope="col">Start amount</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for portfolio in content %}
+            <tr>
+              <th scope="row">{{ portfolio[1] }}</th>
+              <td>{{ portfolio[2] }}</td>
+              <td>{{ portfolio[3] }}</td>
+              <td><form action="#" method="post">
+                  <input type="hidden" name="portfolio_id" value="{{ portfolio[0] }}">
+                  <input type="submit" class="btn btn-outline-success" name="get_coin" value="Show coins">
+              </form></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

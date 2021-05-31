@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+Index Page
+{% endblock %}
+
+{% block content %}
+    <table class="table table-primary table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Platform ID</th>
+          <th scope="col">Platform Name</th>
+          <th scope="col">Number of coins</th>
+          <th scope="col">Volume</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for platform in content %}
+        <tr>
+          <th scope="row">{{ platform[0] }}</th>
+          <td>{{ platform[1] }}</td>
+          <td>{{ platform[2] }}</td>
+          <td>{{ '{0:,}'.format(platform[3]) }}</td>
+          <td><form action="#" method="post">
+              <input type="hidden" name="platform_id" value="{{ platform[0] }}">
+              <input type="submit" class="btn btn-outline-success" name="get_listing" value="Get all listings!">
+          </form></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}
