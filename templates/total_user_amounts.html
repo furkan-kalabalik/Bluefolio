@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+Index Page
+{% endblock %}
+
+{% block content %}
+    <table class="table table-primary table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">User ID</th>
+          <th scope="col">Total Amount(USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for amount in content %}
+        <tr>
+          <th scope="row">{{ amount[0] }}</th>
+            {% if amount[1] != None %}
+                <td>{{ '{0:,}'.format(amount[1]) }}</td>
+            {% else %}
+                <td>{{ "No saving" }}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

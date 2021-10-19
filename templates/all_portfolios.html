@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+Index Page
+{% endblock %}
+
+{% block content %}
+    <table class="table table-primary table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">User Id</th>
+          <th scope="col">Portfolio Name</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Coin name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for saving in content %}
+        <tr>
+          <td>{{ saving[0] }}</td>
+          <td>{{ saving[1] }}</td>
+          <td>{{ saving[2] }}</td>
+          <td>{{ saving[3] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

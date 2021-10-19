@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+Index Page
+{% endblock %}
+
+{% block content %}
+    <table class="table table-primary table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Platform Name</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for listing in content %}
+        <tr>
+          <td>{{ listing[0] }}</td>
+          <td>{{ '{0:,}'.format(listing[1]) }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

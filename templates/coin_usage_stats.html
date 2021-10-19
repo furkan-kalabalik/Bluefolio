@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+Index Page
+{% endblock %}
+
+{% block content %}
+    <table class="table table-primary table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Coin</th>
+          <th scope="col">Used portfolio count</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for usage in content %}
+        <tr>
+          <td>{{ usage[0] }}</td>
+          <td>{{ usage[1] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

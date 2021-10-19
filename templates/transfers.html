@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}
+Index Page
+{% endblock %}
+
+{% block content %}
+    <table class="table table-primary table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Transfer ID</th>
+          <th scope="col">From Hash</th>
+            <th scope="col">To Hash</th>
+          <th scope="col">Network</th>
+          <th scope="col">Coin</th>
+          <th scope="col">Amount</th>
+          <th scope="col">User Id</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for transfer in content %}
+        <tr>
+          <td>{{ transfer[0] }}</td>
+          <td>{{ transfer[1] }}</td>
+          <td>{{ transfer[2] }}</td>
+          <td>{{ transfer[3] }}</td>
+            <td>{{ transfer[4] }}</td>
+          <td>{{ transfer[5] }}</td>
+          <td>{{ transfer[6] }}</td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="mb-3 rounded bg-success">
+    <h2>Create new transfer!</h2>
+        <form action="#" method="post">
+            <input type="hidden" name="post_req" value="alarm">
+            <label for="exampleFormControlInput1" class="form-label">From Hash</label>
+              <input type="text" class="form-control" name="from" placeholder="hash">
+            <label for="exampleFormControlInput1" class="form-label">To Hash</label>
+              <input type="text" class="form-control" name="to" placeholder="hash">
+            <label for="exampleFormControlInput1" class="form-label">Network</label>
+              <input type="text" class="form-control" name="network" placeholder="BSC20 or anything">
+            <label for="exampleFormControlInput1" class="form-label">Coin Name</label>
+              <input type="text" class="form-control" name="alias" placeholder="BTC, ETH ...">
+            <label for="exampleFormControlInput1" class="form-label">Amount</label>
+              <input type="text" class="form-control" name="amount" placeholder="amount">
+            <label for="exampleFormControlInput1" class="form-label">USER ID</label>
+              <input type="text" class="form-control" name="user_id" placeholder="USER ID">
+            <input type="submit" class="btn btn-warning" name="add_user" value="Apply transfer!">
+        </form>
+    </div>
+{% endblock %}

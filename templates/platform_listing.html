@@ -10,16 +10,41 @@ Index Page
           <th scope="col">Coin Name</th>
           <th scope="col">Price</th>
           <th scope="col">Volume</th>
+          <th scope="col">Delist Coin</th>
         </tr>
       </thead>
       <tbody>
         {% for coin in content %}
         <tr>
           <th scope="row">{{ coin[0] }}</th>
-          <td>{{ '{0:,}'.format(coin[1]) }}</td>
+          <td><form action="#" method="post">
+              <input type="hidden" name="post_req" value="change_price">
+              <input type="hidden" name="coin_alias" value="{{ coin[0] }}">
+              <input type="text" class="form-control mb-2 mr-sm-2" name="new_price" value="{{ '{0:,}'.format(coin[1]) }}">
+              <input type="submit" class="btn btn-outline-success" name="Change Price" value="Change Price">
+          </form></td>
           <td>{{ '{0:,}'.format(coin[2]) }}</td>
+          <td><form action="#" method="post">
+              <input type="hidden" name="post_req" value="delist">
+              <input type="hidden" name="coin_alias" value="{{ coin[0] }}">
+              <input type="submit" class="btn btn-danger" name="Delist" value="Delist!">
+          </form></td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
+    <div class="mb-3">
+    <h2>Add new coin!</h2>
+        <form action="#" method="post">
+            <input type="hidden" name="post_req" value="add_listing">
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+              <input type="text" class="form-control" name="alias" placeholder="BTC, ETH, e.g">
+            <label for="exampleFormControlInput1" class="form-label">Volume</label>
+              <input type="text" class="form-control" name="volume" placeholder="Volume">
+            <label for="exampleFormControlInput1" class="form-label">Price</label>
+              <input type="text" class="form-control" name="price" placeholder="Price">
+            <input type="submit" class="btn btn-outline-success" name="add_coin" value="Add coin to platform!">
+        </form>
+
+    </div>
 {% endblock %}

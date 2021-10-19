@@ -26,6 +26,7 @@ Index Page
           <td>{{ user[4] }}</td>
           <td>{{ user[5] }}</td>
           <td><form action="#" method="post">
+              <input type="hidden" name="post_req" value="get_portfolio">
               <input type="hidden" name="user_id" value="{{ user[0] }}">
               <input type="submit" class="btn btn-outline-success" name="get_portfolio" value="Get portfolios!">
           </form></td>
@@ -33,4 +34,20 @@ Index Page
         {% endfor %}
       </tbody>
     </table>
+    <div class="mb-3 rounded bg-success">
+    <h2>Add new user!</h2>
+        <form action="#" method="post">
+            <input type="hidden" name="post_req" value="add_user">
+            <label for="exampleFormControlInput1" class="form-label">Mail</label>
+              <input type="text" class="form-control" name="mail" placeholder="example@example.com">
+            <label for="exampleFormControlInput1" class="form-label">Password</label>
+              <input type="text" class="form-control" name="password" placeholder="password">
+            <label for="exampleFormControlInput1" class="form-label">First Name</label>
+              <input type="text" class="form-control" name="first" placeholder="John">
+            <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+              <input type="text" class="form-control" name="last" placeholder="Cole">
+            <input type="submit" class="btn btn-warning" name="add_user" value="Add user!">
+        </form>
+
+    </div>
 {% endblock %}

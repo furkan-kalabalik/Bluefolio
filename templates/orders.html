@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}
+Index Page
+{% endblock %}
+
+{% block content %}
+    <table class="table table-primary table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Amount</th>
+          <th scope="col">Condition</th>
+          <th scope="col">Buy/Sell</th>
+          <th scope="col">Status</th>
+          <th scope="col">User Id</th>
+          <th scope="col">FROM</th>
+          <th scope="col">TO</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in content %}
+        <tr>
+          <td>{{ '{0:,}'.format(order[0]) }}</td>
+        {% if order[1] < 0 %}
+            <td>{{ '{0:,}'.format((-1)*order[1])+"<" }}</td>
+        {% else %}
+            <td>{{ '{0:,}'.format(order[1])+">" }}</td>
+        {% endif %}
+        {% if order[2] == 'B' %}
+            <td>{{ "BUY" }}</td>
+        {% else %}
+            <td>{{ "SELL" }}</td>
+        {% endif %}
+        <td>{{ order[3] }}</td>
+        <td>{{ order[4] }}</td>
+        <td>{{ order[5] }}</td>
+        <td>{{ order[6] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="container bg-success rounded">
+        <form action="#" method="post">
+      <div class="mb-3">
+        <label class="form-label">Amount</label>
+        <input type="text" class="form-control" name="amount" aria-describedby="amount of order">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Trigger condition</label>
+        <input type="text" class="form-control" name="trigger_condition" aria-describedby="< or >">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Buy or sell</label>
+        <input type="text" class="form-control" name="buy_or_sell" aria-describedby="B/S">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">For user</label>
+        <input type="text" class="form-control" name="user_id" aria-describedby="user_id">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">From list id</label>
+        <input type="text" class="form-control" name="from" aria-describedby="from">
+        <label class="form-label">To list id</label>
+        <input type="text" class="form-control" name="to" aria-describedby="to">
+      </div>
+      <button type="submit" class="btn btn-primary">Create order!</button>
+    </form>
+    </div>
+{% endblock %}

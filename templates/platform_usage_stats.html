@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+Index Page
+{% endblock %}
+
+{% block content %}
+    <table class="table table-primary table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Platform name</th>
+          <th scope="col">User Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for platform in content %}
+        <tr>
+          <td>{{ platform[0] }}</td>
+          <td>{{ platform[1] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

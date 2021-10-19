@@ -13,6 +13,7 @@ Index Page
           <th scope="col">All time high</th>
           <th scope="col">All time low</th>
           <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +25,12 @@ Index Page
           <td>{{ '{0:,}'.format(coin[3]) }}</td>
           <td>{{ '{0:,}'.format(coin[4]) }}</td>
           <td><form action="#" method="post">
+              <input type="hidden" name="post_req" value="1">
+              <input type="hidden" name="coin_alias" value="{{ coin[0] }}">
+              <input type="submit" class="btn btn-outline-success" name="get_news" value="Get news!">
+          </form></td>
+          <td><form action="#" method="post">
+              <input type="hidden" name="post_req" value="2">
               <input type="hidden" name="coin_alias" value="{{ coin[0] }}">
               <input type="submit" class="btn btn-outline-success" name="get_listing" value="Get all listings!">
           </form></td>
@@ -31,4 +38,22 @@ Index Page
         {% endfor %}
       </tbody>
     </table>
+    <div class="mb-3">
+    <h2>Add new coin!</h2>
+        <form action="#" method="post">
+            <input type="hidden" name="post_req" value="3">
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+              <input type="text" class="form-control" name="alias" placeholder="BTC, ETH, e.g">
+            <label for="exampleFormControlInput1" class="form-label">Volume</label>
+              <input type="text" class="form-control" name="volume" placeholder="Volume">
+            <label for="exampleFormControlInput1" class="form-label">Price</label>
+              <input type="text" class="form-control" name="price" placeholder="Price">
+            <label for="exampleFormControlInput1" class="form-label">ATH</label>
+              <input type="text" class="form-control" name="ath" placeholder="ATH">
+            <label for="exampleFormControlInput1" class="form-label">ATL</label>
+              <input type="text" class="form-control" name="atl" placeholder="ATL">
+            <input type="submit" class="btn btn-outline-success" name="add_coin" value="Add coin!">
+        </form>
+
+    </div>
 {% endblock %}

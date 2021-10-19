@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}
+Index Page
+{% endblock %}
+
+{% block content %}
+    <table class="table table-primary table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Alarm ID</th>
+          <th scope="col">Related User</th>
+            <th scope="col">Platform Name</th>
+          <th scope="col">Coin Name</th>
+          <th scope="col">Trigger Condition</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for alarm in content %}
+        <tr>
+          <td>{{ alarm[0] }}</td>
+          <td>{{ alarm[1] }}</td>
+          <td>{{ alarm[2] }}</td>
+          <td>{{ alarm[3] }}</td>
+        {% if alarm[4] < 0 %}
+            <td>{{ '{0:,}'.format((-1)*alarm[4])+"<" }}</td>
+        {% else %}
+            <td>{{ '{0:,}'.format((-1)*alarm[4])+">" }}</td>
+        {% endif %}
+            <td>{{ alarm[5] }}</td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="mb-3 rounded bg-success">
+    <h2>Add new alarm!</h2>
+        <form action="#" method="post">
+            <input type="hidden" name="post_req" value="alarm">
+            <label for="exampleFormControlInput1" class="form-label">Related User</label>
+              <input type="text" class="form-control" name="user_id" placeholder="User id">
+            <label for="exampleFormControlInput1" class="form-label">Listing</label>
+              <input type="text" class="form-control" name="list_id" placeholder="List_id">
+            <label for="exampleFormControlInput1" class="form-label">Trigger Condition</label>
+              <input type="text" class="form-control" name="trigger_condition" placeholder="<400 or >400">
+            <input type="submit" class="btn btn-warning" name="add_user" value="Add order!">
+        </form>
+    </div>
+{% endblock %}
